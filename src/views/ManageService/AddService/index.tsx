@@ -52,12 +52,12 @@ const AddService: React.FC<LoginProps> = function ({ dispatch, history }) {
   const [form] = Form.useForm()
   const [lockedVal, setLockedVal] = useState<any>(false)
   const [inhibitorCheckedVal, setInhibitorCheckedVal] = useState<any>(false)
-  const type = location.pathname.split('/')[1]
-  const id = location.pathname.split('/')[3]
+  const type = (typeof window !== "undefined") ? window.location.pathname.split('/')[1] : '';
+  const id = (typeof window !== "undefined") ? window.location.pathname.split('/')[3] : '';
   const [engineers, setEngineers] = useState<any>('')
   const [readonlyFields, setReadonlyFields] = useState<any>(false)
   let boilerId = ''
-  const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+  const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
   const [user, setUser] = useState<any>({
     status: 'ACTIVE',
     verified: true,
@@ -322,7 +322,6 @@ const AddService: React.FC<LoginProps> = function ({ dispatch, history }) {
     setLockedVal(e.target.checked)
   }
 
-  let sigPad: any = {}
   const clear = () => {
     sigPad.clear()
   }

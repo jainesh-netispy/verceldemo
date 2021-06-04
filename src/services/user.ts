@@ -59,7 +59,8 @@ export const serviceLogin = async (values: any) => {
 
 export const serviceExportData = async (type: any) => {
   try {
-    const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+    const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
+
     const userToken = userInfo && userInfo.token ? userInfo.token : ''
     let option = {}
     if (type === 'pdf') {
@@ -90,7 +91,7 @@ export const serviceExportData = async (type: any) => {
 }
 export const serviceUsers = async (values: any) => {
   try {
-    const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+    const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
     const userToken = userInfo && userInfo.token ? userInfo.token : ''
     const result = await Axios.get(api.users, {
       headers: {
@@ -111,7 +112,7 @@ export const serviceUsers = async (values: any) => {
 }
 export const servicePollNotification = async (value: any) => {
   try {
-    const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+    const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
     const userToken = userInfo && userInfo.token ? userInfo.token : ''
     const userId = userInfo && userInfo.user && userInfo.user._id
     const result = await Axios.get(api.pollNotification + userId, {
@@ -134,7 +135,7 @@ export const servicePollNotification = async (value: any) => {
 
 export const serviceCurrentUsers = async (id: any) => {
   try {
-    const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+    const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
     const userToken = userInfo && userInfo.token ? userInfo.token : ''
     const result = await Axios.get(api.ediUsersDetails + id, {
       headers: {
@@ -156,7 +157,7 @@ export const serviceCurrentUsers = async (id: any) => {
 
 export const serviceDeleteAvatar = async (id: any) => {
   try {
-    const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+    const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
     const userToken = userInfo && userInfo.token ? userInfo.token : ''
     const result = await Axios.delete(api.removeAvatar + id, {
       headers: {
@@ -177,7 +178,7 @@ export const serviceDeleteAvatar = async (id: any) => {
 }
 export const serviceDeleteUser = async (id: any) => {
   try {
-    const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+    const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
     const userToken = userInfo && userInfo.token ? userInfo.token : ''
     const result = await Axios.delete(api.deleteUser + id, {
       headers: {
@@ -199,7 +200,7 @@ export const serviceDeleteUser = async (id: any) => {
 
 export const serviceEditPollNotification = async (notificationId: any, userId: any, value: any) => {
   try {
-    const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+    const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
     const userToken = userInfo && userInfo.token ? userInfo.token : ''
     const result = await Axios.put(
       api.updateuser + userId + '/notification/' + notificationId,
@@ -225,7 +226,7 @@ export const serviceEditPollNotification = async (notificationId: any, userId: a
 
 export const serviceRefCommunity = async (id: any) => {
   try {
-    const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+    const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
     const userToken = userInfo && userInfo.token ? userInfo.token : ''
     const userId = userInfo && userInfo.user && userInfo.user._id
     const result = await Axios.get(api.refcommunity + userId, {
@@ -247,7 +248,7 @@ export const serviceRefCommunity = async (id: any) => {
 }
 export const serviceCommunity = async (id: any) => {
   try {
-    const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+    const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
     const userToken = userInfo && userInfo.token ? userInfo.token : ''
     const result = await Axios.get(api.community + id, {
       headers: {
@@ -268,7 +269,7 @@ export const serviceCommunity = async (id: any) => {
 }
 export const serviceGetQue = async (id: any) => {
   try {
-    const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+    const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
     const userToken = userInfo && userInfo.token ? userInfo.token : ''
     const result = await Axios.get(api.firstpollget + id, {
       headers: {
@@ -289,7 +290,7 @@ export const serviceGetQue = async (id: any) => {
 }
 export const serviceMembers = async (id: any) => {
   try {
-    const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+    const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
     const userToken = userInfo && userInfo.token ? userInfo.token : ''
     const result = await Axios.get(api.community + id + `/get-member`, {
       headers: {
@@ -311,7 +312,7 @@ export const serviceMembers = async (id: any) => {
 
 export const serviceaddToRefCommunity = async (userToken: any, communityId: any) => {
   try {
-    const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+    const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
     const userToken = userInfo && userInfo.token ? userInfo.token : ''
     const result = await Axios.post(api.community + communityId, '', {
       headers: {
@@ -333,7 +334,7 @@ export const serviceaddToRefCommunity = async (userToken: any, communityId: any)
 
 export const serviceaddToCommunity = async (userToken: any, communityId: any) => {
   try {
-    const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+    const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
     const userToken = userInfo && userInfo.token ? userInfo.token : ''
     const result = await Axios.post(api.community + communityId, '', {
       headers: {
@@ -355,7 +356,7 @@ export const serviceaddToCommunity = async (userToken: any, communityId: any) =>
 
 export const serviceUpdateUserPass = async (id: any, values: any, userToken: any) => {
   try {
-    const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+    const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
     const userToken = userInfo && userInfo.token ? userInfo.token : ''
     const result = await Axios.post(api.updateuserpass, values, {
       headers: {
@@ -376,7 +377,7 @@ export const serviceUpdateUserPass = async (id: any, values: any, userToken: any
 }
 export const serviceUpdateUserInfo = async (id: any, values: any) => {
   try {
-    const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+    const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
     const userToken = userInfo && userInfo.token ? userInfo.token : ''
     const result = await Axios.put(api.updateuser + id, values, {
       headers: {
@@ -397,7 +398,7 @@ export const serviceUpdateUserInfo = async (id: any, values: any) => {
 }
 export const serviceFileUpload = async (id: any, values: any, userToken: any) => {
   try {
-    const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+    const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
     const userToken = userInfo && userInfo.token ? userInfo.token : ''
     const result = await Axios.put(api.updateuser + id, values, {
       headers: {
@@ -418,7 +419,7 @@ export const serviceFileUpload = async (id: any, values: any, userToken: any) =>
 }
 export const serviceAddUser = async (value: any, type: any) => {
   try {
-    const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+    const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
     const userToken = userInfo && userInfo.token ? userInfo.token : ''
     const result =
       type == 'Add'
@@ -483,7 +484,7 @@ export const serviceAddUser = async (value: any, type: any) => {
 }
 export const serviceCurrentUser = async (id: any) => {
   try {
-    const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+    const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
     const userToken = userInfo && userInfo.token ? userInfo.token : ''
     const result = await Axios.get(api.currentuser + id, {
       headers: {
@@ -518,7 +519,7 @@ export const serviceRegister = async (values: any) => {
 }
 export const serviceAddCommunity = async (data: any) => {
   try {
-    const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+    const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
     const userToken = userInfo && userInfo.token ? userInfo.token : ''
     const result = await Axios.post(api.addcommunity, data, {
       headers: {
@@ -611,7 +612,7 @@ export const serviceLoginOtpVerify = async (values: any) => {
 
 export const serviceGetEngineers = async () => {
   try {
-    const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+    const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
 
     const userToken = userInfo && userInfo.token ? userInfo.token : ''
     const result = await Axios.get(api.serviceEngineersList, {

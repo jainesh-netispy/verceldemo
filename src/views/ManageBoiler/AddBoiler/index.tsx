@@ -46,7 +46,7 @@ type LoginProps = {
 
 const AddBoiler: React.FC<LoginProps> = function ({ dispatch, location, history }) {
   const router = useRouter()
-  const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+  const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
   const id = router.pathname.split('/')[4]
   const selectedTabType = router.pathname.split('/')[2]
   const [form] = Form.useForm()
@@ -64,7 +64,7 @@ const AddBoiler: React.FC<LoginProps> = function ({ dispatch, location, history 
 
   const [disabledFlag, setDisabledFlag] = useState(false)
 
-  if (id) {
+  if (id && typeof window !== "undefined") {
     window.localStorage.setItem('backBoilerId', id)
   }
 

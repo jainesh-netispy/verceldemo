@@ -24,14 +24,14 @@ const PrivateRoute: React.FC<Props> = function ({
   ...rest
 }) {
   // 取消不是当前页面的所有http请求
-  if (Array.isArray(window.axiosCancelTokenStore)) {
+  /* if (Array.isArray(window.axiosCancelTokenStore)) {
     window.axiosCancelTokenStore.forEach(store => {
       if (store.pathname !== location.pathname) {
         store.cancel()
       }
     })
     window.axiosCancelTokenStore = []
-  }
+  } */
   const { meta } = rest
 
   // console.log(window.location.pathname);

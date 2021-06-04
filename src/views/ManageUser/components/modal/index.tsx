@@ -33,7 +33,7 @@ const CreateContent: React.FC<Props> = function ({
   const [form] = Form.useForm()
   const [state, setState] = useSetState(initialState)
   const [description, setDescription] = useState('')
-  const dispatch = useDispatch()
+  const dispatch:any = useDispatch()
 
   useEffect(() => {
     if (visible && rowData) {

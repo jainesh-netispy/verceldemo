@@ -3,13 +3,13 @@ import './style.scss'
 import config from '../../config'
 import { Layout, Menu } from 'antd'
 import { withRouter, RouteComponentProps, Link } from 'react-router-dom'
-import { HomeMainState } from '../../views/home/main-entry/index'
+// import { HomeMainState } from '../../views/home/main-entry/index'
 import { HOME_SIDER_MENU_LIST } from '../../constants'
 
 const { Sider } = Layout
 const { SubMenu } = Menu
 
-type Props = HomeMainState & RouteComponentProps
+type Props = RouteComponentProps
 
 const Sidebar: React.FC<Props> = function ({ location, collapsed }) {
   const [selectedKeys, setSelectedKeys] = useState('')

@@ -46,7 +46,8 @@ const ExportData = () => {
       }
     }
   }
-  const userInfo = JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any)
+  
+  const userInfo = (typeof window !== "undefined") ? JSON.parse(localStorage.getItem(LOCAL_STORAGE.USER) as any) : [];
   const dispatch = useDispatch<any>()
   const getExport = ({ key }) => {
     try {
