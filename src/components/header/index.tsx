@@ -5,7 +5,7 @@ import moment from 'moment'
 import config from '../../config'
 import { Layout, Badge, Popover, Empty } from 'antd'
 import { withRouter, RouteComponentProps, Link } from 'react-router-dom'
-import { HomeMainState } from '../../views/home/main-entry/index'
+// import { HomeMainState } from '../../views/home/main-entry/index'
 import { connect } from 'react-redux'
 import { StoreState } from '../../redux/index'
 import { logout } from '../../redux/actions/user'
@@ -30,7 +30,7 @@ const popoverList = [
   { name: SETTING.ACCOUNT.name, path: SETTING.ACCOUNT.path },
 ]
 
-type Props = ReturnType<typeof mapStateToProps> & HomeMainState & RouteComponentProps
+type Props = ReturnType<typeof mapStateToProps> & RouteComponentProps
 
 const PopoverContent = (
   <div className="popover-content">

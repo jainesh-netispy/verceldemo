@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 
-import Header from 'src/components/Header'
+import Header from 'src/components/header'
 import Footer from 'src/components/loginFooter'
 
 const MainWrapper = styled.div`
